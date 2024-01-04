@@ -29,7 +29,7 @@ class SongBook extends Database {
 
     // Method to fetch a specific song based on its ID
     public function fetch($id) {
-        $sql = " SELECT * FROM t_song WHERE id = '".$id."' LIMIT 1 ";
+        $sql = " SELECT * FROM t_song WHERE id = '".mysqli_real_escape_string($this->con, $id)."' LIMIT 1 ";
 
         $result = $this->con->query($sql);
 
@@ -44,7 +44,7 @@ class SongBook extends Database {
 
     // Method to remove a song from the database based on its ID
     public function remove($id) {
-        $sql = " DELETE FROM t_song WHERE id = '".$id."' ";
+        $sql = " DELETE FROM t_song WHERE id = '".mysqli_real_escape_string($this->con, $id)."' ";
 
         $result = $this->con->query($sql);
 
@@ -58,10 +58,10 @@ class SongBook extends Database {
 
     // Method to save or update a song in the database
     public function save($data) {
-        $id = $data['id'];
-        $title = $data['title'];
-        $artist = $data['artist'];
-        $lyrics = $data['lyrics'];
+        $id = mysqli_real_escape_string($this->con, $data['id']);
+        $title = mysqli_real_escape_string($this->con, $data['title']);
+        $artist = mysqli_real_escape_string($this->con, $data['artist']);
+        $lyrics = mysqli_real_escape_string($this->con, $data['lyrics']);
         $date = date('Y-m-d H:i:s');
 
         // Check if the song is being inserted or updated
