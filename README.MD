@@ -25,3 +25,8 @@ How to install
 3. Move the repo inside the htdocs of xampp
 4. Import the songbook.sql file using any 3rd party software or tool for mariadb or using phpMyAdmin
 5. Browse your repo in any browser that support javascript such as chrome, firefox, etc.
+
+How to configure db connection
+
+1. On root dir of repo, open the file config/db.php
+2. Change host, username, password, and database base from your mariadb server setup
